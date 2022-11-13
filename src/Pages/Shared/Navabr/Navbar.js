@@ -2,27 +2,42 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const menuItems = (
+  const navItems = (
     <>
-      <li className="rounded-lg">
-        <Link to="/" className="rounded-lg">Home</Link>
+      <li>
+        <Link to="/" className="rounded font-bold">
+          Home
+        </Link>
       </li>
-      <li className="rounded-lg">
-        <Link to="/about" className="rounded-lg">About</Link>
+      <li>
+        <Link to="/About" className="rounded font-bold">
+          About
+        </Link>
       </li>
-      <li className="rounded-lg">
-        <Link to="/appointment" className="rounded-lg">Appointment</Link>
+      <li>
+        <Link to="/appointment" className="rounded font-bold">
+          Appointment
+        </Link>
       </li>
-      <li >
-        <Link to="review" className="rounded-lg">Review</Link>
+      <li>
+        <Link to="/reviews" className="rounded font-bold">
+          Reviews
+        </Link>
       </li>
-      <li className="rounded-lg">
-        <Link to="/login" className="rounded-lg">Login</Link>
+      <li>
+        <Link to="/contact" className="rounded font-bold">
+          Contact Us
+        </Link>
+      </li>
+      <li>
+        <Link to="/login" className="rounded font-bold">
+          Login
+        </Link>
       </li>
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 flex justify-between">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -43,17 +58,18 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100  w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
           >
-            {menuItems}
+            {navItems}
           </ul>
         </div>
-        <Link to="/" className="normal-case text-xl ">Doctor Portal</Link>
+        <Link to="/" className="normal-case text-xl font-bold">
+          Doctors Portal
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 ">{menuItems}</ul>
+        <ul className="menu menu-horizontal p-0">{navItems}</ul>
       </div>
-      <div className="navbar-end"></div>
     </div>
   );
 };
