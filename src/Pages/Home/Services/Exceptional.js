@@ -18,7 +18,7 @@ const Exceptional = () => {
             here', making it look like readable English. Many desktop publishing
             packages and web page
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn bg-gradient-to-r from-secondary to-primary border-0">Get Started</button>
         </div>
       </div>
     </div>

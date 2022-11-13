@@ -36,7 +36,7 @@ const ContectUs = () => {
               placeholder="Message"
             ></textarea>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Submit</button>
+              <button className="btn bg-gradient-to-r from-secondary to-primary border-0">Submit</button>
             </div>
           </div>
         </div>

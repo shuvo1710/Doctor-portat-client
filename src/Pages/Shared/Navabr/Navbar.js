@@ -5,32 +5,32 @@ const Navbar = () => {
   const navItems = (
     <>
       <li>
-        <Link to="/" className="rounded font-bold">
+        <Link to="/" className="rounded font-semibold">
           Home
         </Link>
       </li>
       <li>
-        <Link to="/About" className="rounded font-bold">
+        <Link to="/About" className="rounded font-semibold">
           About
         </Link>
       </li>
       <li>
-        <Link to="/appointment" className="rounded font-bold">
+        <Link to="/appointment" className="rounded font-semibold">
           Appointment
         </Link>
       </li>
       <li>
-        <Link to="/reviews" className="rounded font-bold">
+        <Link to="/reviews" className="rounded font-semibold">
           Reviews
         </Link>
       </li>
       <li>
-        <Link to="/contact" className="rounded font-bold">
+        <Link to="/contact" className="rounded font-semibold">
           Contact Us
         </Link>
       </li>
       <li>
-        <Link to="/login" className="rounded font-bold">
+        <Link to="/login" className="rounded font-semibold">
           Login
         </Link>
       </li>
