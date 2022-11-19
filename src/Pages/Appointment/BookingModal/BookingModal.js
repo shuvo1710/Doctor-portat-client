@@ -1,9 +1,12 @@
 import { format } from "date-fns";
-import React from "react";
-
-const BookingModal = ({treatment, selectedDate,setTreatment}) => {
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import {AuthContext} from '../../../Context/AuthProvider'
+const BookingModal = ({treatment, selectedDate,setTreatment, refetch}) => {
     const {name, slots} = treatment;
     const date = format(selectedDate, 'PP')
+    const {user}= useContext(AuthContext)
+    
 
     const handleBooking = event=>{
         event.preventDefault()
@@ -22,9 +25,29 @@ const BookingModal = ({treatment, selectedDate,setTreatment}) => {
             phone
 
         }
-
         console.log(booking)
-        setTreatment(null)
+        fetch('http://localhost:5000/bookings',{
+          method:'POST',
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(booking)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          if(data.acknowledged){
+            console.log(data)
+            setTreatment(null)
+            toast.success('Booking Confirmed')
+            refetch()
+          } 
+          else{
+            toast.error(data.message)
+          }
+          
+        })
+        
+        
     }
   return (
     <>
@@ -48,8 +71,8 @@ const BookingModal = ({treatment, selectedDate,setTreatment}) => {
                 slots?.map((slot, i)=> <option key={i} value={slot}>{slot}</option>)
             }
         </select>
-          <input name="userName" type="text" placeholder="Your Name" className="input input-bordered w-full " />
-          <input name="email" type="email" placeholder="Email Address" className="input input-bordered w-full " />
+          <input defaultValue={user?.patient} name="userName" type="text" placeholder="Your Name" className="input input-bordered w-full " />
+          <input disabled defaultValue={user?.email} name="email" type="email" placeholder="Email Address" className="input input-bordered w-full " />
           <input name="phone" type="number" placeholder="Phone Number" className="input input-bordered w-full " />
           <input type="submit" className="w-full bg-accent p-2 rounded-lg text-white mt-4" value="Submit" />
 
